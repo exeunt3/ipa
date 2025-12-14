@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { ProtocolSchema } from "@/lib/schemas";
-import { commitFileToGithub } from "@/lib/github";
+import { upsertFileToGithub } from "@/lib/github";
 import { slugify, toFrontMatterMarkdown } from "@/lib/content";
 
 export async function POST(req: Request) {
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     const body = `## Overview\n\n${json.overview || ""}\n\n## Steps\n\n${json.steps || ""}\n`;
     const md = toFrontMatterMarkdown(protocol, body);
 
-    await commitFileToGithub({
+    await upsertFileToGithub({
       owner: process.env.GITHUB_OWNER!,
       repo: process.env.GITHUB_REPO!,
       branch: process.env.GITHUB_BRANCH || "main",

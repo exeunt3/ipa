@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { ExperienceSchema } from "@/lib/schemas";
-import { commitFileToGithub } from "@/lib/github";
+import { upsertFileToGithub } from "@/lib/github";
 import { toFrontMatterMarkdown } from "@/lib/content";
 
 export async function POST(req: Request) {
@@ -18,7 +18,7 @@ export async function POST(req: Request) {
 
     const name = `${today}_${exp.protocol_slug}_${Math.random().toString(16).slice(2,6)}.md`;
 
-    await commitFileToGithub({
+    await upsertFileToGithub({
       owner: process.env.GITHUB_OWNER!,
       repo: process.env.GITHUB_REPO!,
       branch: process.env.GITHUB_BRANCH || "main",
