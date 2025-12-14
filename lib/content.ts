@@ -1,6 +1,6 @@
 import matter from "gray-matter";
 
-export function toFrontMatterMarkdown(data: any, body: string) {
+export function toFrontMatterMarkdown(data: Record<string, unknown>, body: string) {
   return matter.stringify(body.trim() + "\n", data);
 }
 
