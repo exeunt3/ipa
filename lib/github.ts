@@ -71,10 +71,10 @@ const putUrl = `https://api.github.com/repos/${owner}/${repo}/contents/${encodeU
 path
 )}`;
 
-const body: any = {
-message,
-content: toBase64(content),
-branch,
+const body: Record<string, string> = {
+  message,
+  content: toBase64(content),
+  branch,
 };
 
 if (sha) body.sha = sha;
