@@ -1,5 +1,5 @@
 import { listProtocols } from "@/lib/content-read";
-import NewExperienceForm from "./new-experience-form.tsx";
+import NewExperienceForm from "./new-experience-form";
 
 export default async function NewExperiencePage({
 searchParams,
