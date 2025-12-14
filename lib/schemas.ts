@@ -44,5 +44,5 @@ export const ExperienceSchema = z.object({
 
   sei_effects: z.array(z.string()).max(7).default([]),
 
-  context: z.record(z.any()).default({}),
+  context: z.record(z.string(), z.unknown()).default({}),
 });
