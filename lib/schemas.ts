@@ -1,5 +1,14 @@
 import { z } from "zod";
 
+export const PROTOCOL_CATEGORIES = [
+  "Music & Sound",
+  "Embodied Practices",
+  "Environmental & Spatial Practices",
+  "Games, Media & Technology",
+] as const;
+
+export type ProtocolCategory = (typeof PROTOCOL_CATEGORIES)[number];
+
 export const ProtocolSchema = z.object({
   id: z.string().min(3),
   title: z.string().min(3),
@@ -9,6 +18,7 @@ export const ProtocolSchema = z.object({
   created_at: z.string(), // YYYY-MM-DD
   updated_at: z.string(), // YYYY-MM-DD
   tags: z.array(z.string()).default([]),
+  categories: z.array(z.enum(PROTOCOL_CATEGORIES)).default([]),
 
   constraints: z
     .object({
@@ -27,20 +37,11 @@ export const ProtocolSchema = z.object({
 });
 
 export const ExperienceSchema = z.object({
-  protocol_id: z.string().min(3),
+  protocol_id: z.string().min(1).optional(),
   protocol_slug: z.string().min(1),
   reported_at: z.string(), // YYYY-MM-DD
 
   anonymity: z.enum(["named", "pseudonymous", "anonymous"]).default("anonymous"),
-
-  core_metrics: z.object({
-    intensity: z.number().int().min(1).max(5),
-    valence: z.number().int().min(-2).max(2),
-    coherence: z.number().int().min(1).max(5),
-    embodiment: z.number().int().min(1).max(5),
-    sociability: z.number().int().min(1).max(5),
-    non_ordinary: z.number().int().min(1).max(5),
-  }),
 
   sei_effects: z.array(z.string()).max(7).default([]),
 

@@ -1,49 +1,53 @@
 import Link from "next/link";
 import { listProtocols } from "@/lib/content-read";
 
+export const dynamic = "force-dynamic";
+
 export default async function ProtocolIndexPage() {
   const protocols = await listProtocols();
 
-  protocols.sort((a, b) =>
-    String(a.frontMatter?.title || "").localeCompare(String(b.frontMatter?.title || ""))
-  );
-
   return (
     <main className="section-grid">
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 16, flexWrap: "wrap" }}>
-        <div className="page-heading" style={{ gap: 6 }}>
-          <h1 style={{ margin: 0 }}>Protocols</h1>
-          <p className="muted" style={{ margin: 0 }}>
-            Markdown-first archive. Protocols live in <code>content/protocols</code>.
-          </p>
-        </div>
+      <div className="page-heading">
+        <h1>Protocols</h1>
+        <p>
+          Explore the archive of intensive protocols—reproducible methods for 
+          engaging with perception, embodiment, and altered states.
+        </p>
+      </div>
+
+      <div style={{ display: "flex", justifyContent: "flex-end", marginBottom: 16 }}>
         <Link className="button" href="/protocols/new">
-          + New protocol
+          + New Protocol
         </Link>
       </div>
 
       {protocols.length === 0 ? (
-        <p className="muted">No protocols yet. Create one.</p>
+        <div className="card" style={{ padding: 24, textAlign: "center" }}>
+          <p className="muted">No protocols yet. Create your first one!</p>
+        </div>
       ) : (
-        <div className="section-grid">
-          {protocols.map((p) => (
-            <Link key={p.slug} href={`/protocols/${p.slug}`} className="list-card">
-              <div style={{ display: "flex", justifyContent: "space-between", gap: 10 }}>
-                <div style={{ fontWeight: 700 }}>{p.frontMatter?.title || p.slug}</div>
-                <span className="muted" style={{ fontSize: 13 }}>
-                  {(p.frontMatter?.tags || []).length} tags
-                </span>
-              </div>
-              <div className="muted" style={{ marginTop: 2 }}>
-                {p.frontMatter?.summary || ""}
-              </div>
-              <div style={{ marginTop: 8, display: "flex", gap: 8, flexWrap: "wrap" }}>
-                {(p.frontMatter?.tags || []).slice(0, 8).map((t: string) => (
-                  <span className="pill" key={t}>
-                    {t}
-                  </span>
-                ))}
-              </div>
+        <div className="section-grid" style={{ gap: 16 }}>
+          {protocols.map((protocol) => (
+            <Link
+              key={protocol.slug}
+              href={`/protocols/${protocol.slug}`}
+              className="card link-plain"
+              style={{ padding: 20, display: "block" }}
+            >
+              <h3 style={{ margin: 0, marginBottom: 8 }}>{protocol.frontMatter.title}</h3>
+              <p className="muted" style={{ margin: 0, fontSize: 14 }}>
+                {protocol.frontMatter.summary}
+              </p>
+              {protocol.frontMatter.tags?.length > 0 && (
+                <div style={{ marginTop: 12, display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {protocol.frontMatter.tags.map((tag: string) => (
+                    <span className="pill" key={tag} style={{ fontSize: 12 }}>
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              )}
             </Link>
           ))}
         </div>

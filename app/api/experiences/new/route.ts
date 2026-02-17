@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { ExperienceSchema } from "@/lib/schemas";
-import { upsertFileToGithub } from "@/lib/github";
-import { toFrontMatterMarkdown } from "@/lib/content";
+import { query, queryOne } from "@/lib/db";
 
 export async function POST(req: Request) {
   try {
@@ -13,19 +12,25 @@ export async function POST(req: Request) {
       ...json,
     });
 
-    const body = `## Narrative\n\n${json.narrative}\n\n## Aftereffects\n\n${json.aftereffects || ""}\n`;
-    const md = toFrontMatterMarkdown(exp, body);
+    const protocol = await queryOne<{ id: number }>(
+      "SELECT id FROM protocols WHERE slug = $1",
+      [exp.protocol_slug]
+    );
 
-    const name = `${today}_${exp.protocol_slug}_${Math.random().toString(16).slice(2,6)}.md`;
-
-    await upsertFileToGithub({
-      owner: process.env.GITHUB_OWNER!,
-      repo: process.env.GITHUB_REPO!,
-      branch: process.env.GITHUB_BRANCH || "main",
-      path: `content/experiences/${name}`,
-      content: md,
-      message: `Add experience for ${exp.protocol_slug}`,
-    });
+    await query(
+      `INSERT INTO experiences (protocol_id, protocol_slug, reported_at, anonymity, sei_effects, context, narrative, aftereffects)
+       VALUES ($1, $2, $3, $4, $5, $6, $7, $8)`,
+      [
+        protocol?.id || null,
+        exp.protocol_slug,
+        today,
+        exp.anonymity,
+        exp.sei_effects,
+        exp.context,
+        json.narrative,
+        json.aftereffects || "",
+      ]
+    );
 
     return NextResponse.json({ ok: true });
   } catch (e: unknown) {

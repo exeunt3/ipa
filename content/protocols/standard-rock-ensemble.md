@@ -9,6 +9,9 @@ tags:
   - coordination
   - group-attunement
   - improvisation
+categories:
+  - Music & Sound
+  - Games, Media & Technology
 constraints:
   group_size: 3-5
   duration_minutes: 45-180

@@ -18,10 +18,6 @@ const SEI_SUGGESTIONS: { id: string; label: string }[] = [
   { id: "awe", label: "Awe" },
 ];
 
-function clamp(n: number, min: number, max: number) {
-  return Math.max(min, Math.min(max, n));
-}
-
 function normalizeEffectId(raw: string) {
   return raw
     .trim()
@@ -61,13 +57,6 @@ export default function NewExperienceForm({
   const [aftereffects, setAftereffects] = useState("");
 
   const [anonymity, setAnonymity] = useState<Anonymity>("anonymous");
-
-  const [intensity, setIntensity] = useState(3);
-  const [valence, setValence] = useState(0);
-  const [coherence, setCoherence] = useState(3);
-  const [embodiment, setEmbodiment] = useState(3);
-  const [sociability, setSociability] = useState(3);
-  const [nonOrdinary, setNonOrdinary] = useState(3);
 
   const [setting, setSetting] = useState("");
   const [groupSize, setGroupSize] = useState<string>("");
@@ -115,14 +104,6 @@ export default function NewExperienceForm({
         protocol_id: protocol.id,
         protocol_slug: protocol.slug,
         anonymity,
-        core_metrics: {
-          intensity: clamp(intensity, 1, 5),
-          valence: clamp(valence, -2, 2),
-          coherence: clamp(coherence, 1, 5),
-          embodiment: clamp(embodiment, 1, 5),
-          sociability: clamp(sociability, 1, 5),
-          non_ordinary: clamp(nonOrdinary, 1, 5),
-        },
         sei_effects: seiEffects,
         context: {
           ...(setting ? { setting } : {}),
@@ -178,29 +159,14 @@ export default function NewExperienceForm({
       </section>
 
       <section style={card}>
-        <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
-          <div>
-            <div style={{ fontWeight: 700 }}>Core metrics</div>
-            <div className="muted" style={{ fontSize: 13 }}>Coarse sliders for comparison.</div>
-          </div>
-          <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <span style={{ fontSize: 13, color: "var(--muted)" }}>Attribution</span>
-            <select value={anonymity} onChange={(e) => setAnonymity(e.target.value as Anonymity)} style={input}>
-              <option value="anonymous">Anonymous</option>
-              <option value="pseudonymous">Pseudonymous</option>
-              <option value="named">Named</option>
-            </select>
-          </label>
-        </div>
-
-        <div style={{ marginTop: 14, display: "grid", gap: 12 }}>
-          <Slider label="Overall intensity" value={intensity} min={1} max={5} onChange={setIntensity} />
-          <Slider label="Valence" value={valence} min={-2} max={2} onChange={setValence} />
-          <Slider label="Coherence ↔ fragmentation" value={coherence} min={1} max={5} onChange={setCoherence} />
-          <Slider label="Embodiment" value={embodiment} min={1} max={5} onChange={setEmbodiment} />
-          <Slider label="Relationality / sociability" value={sociability} min={1} max={5} onChange={setSociability} />
-          <Slider label="Non-ordinary quality" value={nonOrdinary} min={1} max={5} onChange={setNonOrdinary} />
-        </div>
+        <label style={{ display: "flex", gap: 8, alignItems: "center" }}>
+          <span style={{ fontSize: 13, color: "var(--muted)" }}>Attribution</span>
+          <select value={anonymity} onChange={(e) => setAnonymity(e.target.value as Anonymity)} style={input}>
+            <option value="anonymous">Anonymous</option>
+            <option value="pseudonymous">Pseudonymous</option>
+            <option value="named">Named</option>
+          </select>
+        </label>
       </section>
 
       <section style={card}>
@@ -290,18 +256,6 @@ export default function NewExperienceForm({
 const card: React.CSSProperties = { marginTop: 12, padding: 16, border: "1px solid var(--line)", borderRadius: 16, background: "var(--card)", boxShadow: "var(--shadow)" };
 const input: React.CSSProperties = { padding: 8, borderRadius: 10 };
 const textarea: React.CSSProperties = { width: "100%", padding: 12, borderRadius: 10, lineHeight: 1.5 };
-
-function Slider(props: { label: string; value: number; min: number; max: number; onChange: (v: number) => void }) {
-  return (
-    <label style={{ display: "grid", gap: 8 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12 }}>
-        <span style={{ fontWeight: 600 }}>{props.label}</span>
-        <span style={{ color: "var(--muted)", fontSize: 13 }}>{props.value}</span>
-      </div>
-      <input type="range" min={props.min} max={props.max} step={1} value={props.value} onChange={(e) => props.onChange(Number(e.target.value))} />
-    </label>
-  );
-}
 
 function Chip({ text, onRemove }: { text: string; onRemove: () => void }) {
   return (

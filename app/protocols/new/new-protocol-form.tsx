@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { PROTOCOL_CATEGORIES, ProtocolCategory } from "@/lib/schemas";
 
 type ProtocolStatus = "draft" | "published" | "deprecated";
 type RiskLevel = "low" | "medium" | "high";
@@ -22,6 +23,7 @@ export default function NewProtocolForm() {
 
   const [status, setStatus] = useState<ProtocolStatus>("draft");
   const [tags, setTags] = useState<string>("intensive, protocol");
+  const [categories, setCategories] = useState<ProtocolCategory[]>([]);
 
   const [groupSize, setGroupSize] = useState<string>("");
   const [durationMinutes, setDurationMinutes] = useState<string>("");
@@ -50,6 +52,12 @@ export default function NewProtocolForm() {
       .slice(0, 32);
   }
 
+  function toggleCategory(cat: ProtocolCategory) {
+    setCategories((prev) =>
+      prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat]
+    );
+  }
+
   async function onSubmit() {
     try {
       setError(null);
@@ -64,6 +72,7 @@ export default function NewProtocolForm() {
         summary: summary.trim(),
         status,
         tags: parseTags(tags),
+        categories,
         constraints: {
           ...(groupSize ? { group_size: Number(groupSize) } : {}),
           ...(durationMinutes ? { duration_minutes: Number(durationMinutes) } : {}),
@@ -105,7 +114,7 @@ export default function NewProtocolForm() {
       <div className="page-heading" style={{ gap: 6 }}>
         <h1>New Protocol</h1>
         <p className="muted">
-          Creates a YAML + Markdown file in <code>content/protocols</code> via GitHub commit.
+          Add a new protocol to the archive.
         </p>
       </div>
 
@@ -132,6 +141,38 @@ export default function NewProtocolForm() {
             </select>
           </label>
           <LabeledInput label="Tags (comma-separated)" value={tags} onChange={setTags} placeholder="walk, attention, breath" />
+        </div>
+      </section>
+
+      <section style={card}>
+        <div style={{ fontWeight: 700 }}>Categories</div>
+        <div className="muted" style={{ fontSize: 13, marginTop: 4 }}>Select one or more categories for this protocol.</div>
+        <div style={{ display: "flex", flexWrap: "wrap", gap: 10, marginTop: 12 }}>
+          {PROTOCOL_CATEGORIES.map((cat) => (
+            <label
+              key={cat}
+              style={{
+                display: "flex",
+                alignItems: "center",
+                gap: 8,
+                padding: "8px 12px",
+                border: categories.includes(cat) ? "2px solid var(--card-fg)" : "2px solid var(--line)",
+                borderRadius: 8,
+                cursor: "pointer",
+                background: categories.includes(cat) ? "var(--card-fg)" : "transparent",
+                color: categories.includes(cat) ? "var(--card-bg)" : "inherit",
+                transition: "all 0.15s ease",
+              }}
+            >
+              <input
+                type="checkbox"
+                checked={categories.includes(cat)}
+                onChange={() => toggleCategory(cat)}
+                style={{ display: "none" }}
+              />
+              <span style={{ fontSize: 13 }}>{cat}</span>
+            </label>
+          ))}
         </div>
       </section>
 

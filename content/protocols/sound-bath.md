@@ -9,6 +9,9 @@ tags:
   - immersion
   - attention
   - non-visual
+categories:
+  - Music & Sound
+  - Embodied Practices
 constraints:
   group_size: 1-30
   duration_minutes: 30-90

@@ -1,0 +1,80 @@
+﻿## About the Intensive Protocol Archive
+
+
+The Intensive Protocol Archive (IPA) is a public repository for documenting, sharing, and studying **intensive protocols**: practices designed to engage real, processual features of the material world as they are lived, sensed, and collectively organized through experience.
+
+
+The **intensive** names a philosophical tradition of **radical empiricism**, associated with thinkers such as William James, Henri Bergson, Gilles Deleuze, and more recently Brian Massumi, Elizabeth Grosz, and Manuel DeLanda. Their work is takes a critical lens on institutional regimes of knowledge, arguing that they tend to overindex on **extensive** properties - quantity, stability, classification, and boundary. Alongside and underneath this surface, these process philosophers argue, **intensive structures** of affect, potential, emergence, and becoming exert influence beneath and beyond the extensive dynamics we find familiar. These structures are not abstractions or metaphors, nor are they reducible to human experience: they are real, autonomous material dynamics that shape how groups cohere, how meaning propagates, and how transformation becomes possible.
+
+
+Extitutional theory has argued that anywhere one finds immanent social organization - informal, horizontal events of human coordination that depend on emergence and stigmergy to set their tone and structure (rather than doctrine, bureaucracy, or regimes of legitimate violence) - experimental epistemologies are not far off. These often take on an animist or pantheistic character, making reference to personified forces or autonomous vibes in order to zero in on subtle dimensions of reality that don’t fall into the individualist or humanist categories of the extensive order. Perhaps most of interest for IPA is how this experimental epistemology converges with maker culture in the form of an empirically grounded *maker metaphysics*, personifying motor engines and building entanglements of chance, affect, or hypersensory perception with material assemblages. This is also true of social engineers, who, no matter how instrumental their training, always resort to the radical empiricist tactic of *feeling it out*. 
+
+
+Its in the underground tradition of mystics, psychonauts, scene guardians, anti-artists and other guerrilla empiricists who have put their engineering capacities toward developing technologies with no end but experience itself, and who have found that so-called “pure experience” to be charismatic, nuanced, and full of dimension and depth even as it is immeasurable that the Intensive Protocol Archive operates. We see how churches, nationalist projects, cults and other institutional forms have cynically mobilized the intensive as a tool of control, relegating it to a place of mystery and fear (along with sex and death). Instead, we seek to demystify, engage, and explore this obscured realm of experience, democratizing access through the longstanding underground power of open protocolization.
+
+
+### What IPA Is
+
+
+The Intensive Protocol Archive is an **experience-first archive**, inspired by projects like **Erowid**, whose decades of careful, community-driven documentation established a gold standard for experiential sharing and protocolization of extitutional knowledge. IPA is deeply indebted to that lineage and approaches it with respect and gratitude.
+
+
+Where Erowid (and others, in particular PsychonautWiki) have done essential work documenting pharmacological substances and their effects, IPA focuses primarily on **non-pharmacological** domains of intensive experience. Additionally, while IPA includes individual-focused protocols like meditation or breathwork within its purview, the archive foregrounds **open social protocols**, cultural and intersubjective strategies that depend on the emergent effects of relation while prioritizing the autonomy and consent of all involved.
+
+
+Examples include:
+
+
+* Musical and performance ensembles
+* Gaming, VR/AR and other web-based practices
+* BDSM and other sexual or somatic practices
+* Group meditation, ritual, and contemplative techniques
+* Psychogeographic and spatial interventions
+* Collective play, endurance, and ordeal formats
+
+
+If many of these practices appear in other archives in partial form, IPA’s intended contribution is to treat them explicitly as **protocols**: transmissible, remixable, and open to empirical refinement.
+
+
+### How the Archive Works
+
+
+IPA accepts two primary kinds of contributions:
+
+
+**Protocols**
+Protocols are structured descriptions of practices. They specify conditions, roles, constraints, materials, and sequences, with an emphasis on reproducibility and adaptation. The constraints of a text-based medium require a high level of standardization in order to optimize for reproducibility; however, it should be noted that in their native environment of the open and ownerless discourse of the publics, open protocols tend to travel in more amorphous form, suspended in a superposition until a host finds the right situation to unfold the knowledge in unique form.
+
+
+In their spirit of open discourse, all protocols are published as Markdown files using a **YAML-based standard** designed for maximal interoperability and machine readability. This allows protocols to be indexed, queried, forked, and recombined across tools and platforms. By publishing a protocol on IPA, users sign over reproduction rights to the Creative Commons. 
+
+
+**Experiences**
+Experiences are phenomenological reports submitted by participants. As Erowid showed, this is where the virtues of web-based mediums really shine through, the sum of experiences in their volume providing a nuanced and holistic view of a protocol that would be logistically impossible to replicate in the wild.
+
+
+Contributors can write in free narrative form, use structured taxonomies, or combine both. If structured taxonomies are frequently used, admins will do their best to introduce them as native features of the Experience interface. For now, IPA uses the **Subjective Effects Index (SEI)** to support taxonomical reporting of non-ordinary experiences. 
+
+
+Ditto on the Creative Commons status of Experiences.
+
+
+### What IPA Is Interested In
+
+
+IPA is especially interested in practices that:
+
+
+* Work through relation, rhythm, attention, and constraint
+* Generate shared or transpersonal effects
+* Function outside formal institutions
+* Evolve through iteration rather than doctrine
+
+
+The archive holds space for diverse traditions, from underground music scenes and rope bondage lineages to situationist dérives and contemplative disciplines. These are treated as practical technologies rather than symbolic expressions or belief systems.
+
+
+### Technology, Research, and the Near Future
+
+
+IPA exists at a moment when experiential data is becoming newly legible. Advances in AI, neurophenomenology, and sensor technology make it possible to study qualitative experience without flattening it into crude metrics. At the same time, these technologies present frontiers of subjectification and cognitive reconfiguration that may change what it means to participate in social and material relationships. By building a framework for protocolizing familiar strategies of intensive experience, IPA hopes to create a container where exotic technologies of non-normal experience can be understood in a coherent lineage. If new technologies push at the limits of the human, the Intensive Protocol Archive is here to say: **We** (the underground, the archaic, the uncivilized) **have always been posthuman.**

@@ -1,21 +1,11 @@
 import Link from "next/link";
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
+import ThemeToggle from "./components/ThemeToggle";
 
 export const metadata: Metadata = {
   title: "Intensive Protocol Archive",
-  description: "A calm, Markdown-first archive for intensive protocols and experiences.",
+  description: "A Markdown-first archive for intensive protocols and experiences.",
 };
 
 export default function RootLayout({
@@ -24,24 +14,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} site-body`}>
+    <html lang="en" suppressHydrationWarning>
+      <body className="site-body">
         <div className="site-shell">
           <header className="site-header">
             <Link href="/" className="brand">
               IPA
-              <small>Intensive Protocol Archive</small>
             </Link>
             <nav className="nav-links">
-              <Link className="pill-link" href="/protocols">
+              <Link className="nav-link" href="/protocols">
                 Protocols
               </Link>
-              <Link className="pill-link" href="/experiences/new">
-                Add experience
+              <Link className="nav-link" href="/about">
+                About
               </Link>
-              <Link className="pill-link" href="/protocols/new">
-                New protocol
+              <Link className="nav-link" href="/experiences/new">
+                Add Experience
               </Link>
+              <Link className="nav-link" href="/protocols/new">
+                New Protocol
+              </Link>
+              <ThemeToggle />
             </nav>
           </header>
           <div className="page-shell">{children}</div>

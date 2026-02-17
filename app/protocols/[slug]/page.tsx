@@ -1,12 +1,14 @@
 import Link from "next/link";
 import { getProtocolBySlug, listExperiencesForProtocol } from "@/lib/content-read";
 
+export const dynamic = "force-dynamic";
+
 type MetricKey = "intensity" | "valence" | "coherence" | "embodiment" | "sociability" | "non_ordinary";
 type CountItem = { key: string; count: number };
 
 type ExperienceFrontMatter = {
   anonymity?: string;
-  reported_at?: string;
+  reported_at?: string | Date;
   core_metrics?: Partial<Record<MetricKey, number>>;
   context?: {
     setting?: string;
@@ -17,6 +19,12 @@ type ExperienceFrontMatter = {
   };
   sei_effects?: string[];
 };
+
+function formatDate(value: string | Date | undefined): string {
+  if (!value) return "";
+  if (value instanceof Date) return value.toISOString().split("T")[0];
+  return String(value);
+}
 
 type ExperienceRecord = { filename: string; frontMatter: ExperienceFrontMatter; contentHtml: string };
 
@@ -33,8 +41,9 @@ type ExperienceStats = {
   };
 };
 
-export default async function ProtocolPage({ params }: { params: { slug: string } }) {
-  const protocol = await getProtocolBySlug(params.slug);
+export default async function ProtocolPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const protocol = await getProtocolBySlug(slug);
   if (!protocol) return <main className="section-grid">Protocol not found.</main>;
 
   const experiences = await listExperiencesForProtocol(protocol.frontMatter.id);
@@ -56,23 +65,23 @@ export default async function ProtocolPage({ params }: { params: { slug: string 
         </div>
 
         <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
-          <Link className="ghost-button button" href="/protocols">
-            ← All protocols
+          <Link className="button button-outline link-plain" href="/protocols">
+            All protocols
           </Link>
-          <Link className="button" href={`/experiences/new?protocol=${encodeURIComponent(protocol.slug)}`}>
+          <Link className="button link-plain" href={`/experiences/new?protocol=${encodeURIComponent(protocol.slug)}`}>
             + Add experience
           </Link>
         </div>
       </div>
 
-      <article className="card" style={{ lineHeight: 1.65 }} dangerouslySetInnerHTML={{ __html: protocol.contentHtml }} />
+      <article className="card-light" style={{ lineHeight: 1.65, padding: 28 }} dangerouslySetInnerHTML={{ __html: protocol.contentHtml }} />
 
       <ExperienceStatsPanel stats={stats} />
 
-      <section className="card section-grid">
+      <section className="section-grid" style={{ marginTop: 16 }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 16, flexWrap: "wrap" }}>
           <h2 style={{ margin: 0 }}>Experiences</h2>
-          <Link className="pill" href={`/experiences/new?protocol=${encodeURIComponent(protocol.slug)}`}>
+          <Link className="pill link-plain" href={`/experiences/new?protocol=${encodeURIComponent(protocol.slug)}`}>
             + Add experience
           </Link>
         </div>
@@ -98,14 +107,14 @@ function ExperienceCard({ exp }: { exp: ExperienceRecord }) {
   const sei: string[] = Array.isArray(fm.sei_effects) ? fm.sei_effects : [];
 
   return (
-    <details className="card" style={{ padding: 16 }}>
+    <details className="card" style={{ padding: 20 }}>
       <summary style={{ cursor: "pointer" }}>
         <div style={{ display: "flex", justifyContent: "space-between", gap: 12, alignItems: "baseline" }}>
-          <strong style={{ display: "inline-flex", gap: 10, alignItems: "baseline" }}>
+          <strong className="sans" style={{ display: "inline-flex", gap: 10, alignItems: "baseline" }}>
             <span>Report</span>
-            <span style={{ fontSize: 12, color: "var(--muted)" }}>{fm.anonymity ? fm.anonymity : "anonymous"}</span>
+            <span style={{ fontSize: 12, opacity: 0.7 }}>{fm.anonymity ? fm.anonymity : "anonymous"}</span>
           </strong>
-          <span style={{ color: "var(--muted)", fontSize: 13 }}>{fm.reported_at}</span>
+          <span className="sans" style={{ opacity: 0.7, fontSize: 13 }}>{formatDate(fm.reported_at)}</span>
         </div>
 
         <div style={{ marginTop: 12, display: "grid", gap: 10 }}>
@@ -135,19 +144,19 @@ function ExperienceCard({ exp }: { exp: ExperienceRecord }) {
                 href="https://www.effectindex.com/effects"
                 target="_blank"
                 rel="noreferrer"
-                style={{ fontSize: 12, color: "var(--muted)", textDecoration: "none" }}
-                onClick={(evt) => evt.stopPropagation()}
+                className="sans"
+                style={{ fontSize: 11, opacity: 0.6, background: "none" }}
               >
                 SEI ↗
               </a>
             </div>
           ) : null}
 
-          <div style={{ fontSize: 12, color: "var(--muted)" }}>Click to expand narrative</div>
+          <div className="sans" style={{ fontSize: 12, opacity: 0.5, marginTop: 4 }}>Click to expand narrative</div>
         </div>
       </summary>
 
-      <div style={{ marginTop: 14, paddingTop: 14, borderTop: "1px solid var(--line)", lineHeight: 1.55 }}
+      <div style={{ marginTop: 16, paddingTop: 16, borderTop: "1px solid rgba(255,255,255,0.2)", lineHeight: 1.65, color: "rgba(255,255,255,0.9)" }}
         dangerouslySetInnerHTML={{ __html: exp.contentHtml }}
       />
     </details>
@@ -157,9 +166,19 @@ function ExperienceCard({ exp }: { exp: ExperienceRecord }) {
 function MetricPill({ label, value }: { label: string; value: string | number | null | undefined }) {
   if (value === undefined || value === null || value === "") return null;
   return (
-    <span className="pill" style={{ opacity: 0.92 }}>
-      <span style={{ color: "var(--muted)" }}>{label}</span>
-      <strong style={{ fontWeight: 700 }}>{String(value)}</strong>
+    <span style={{ 
+      display: "inline-flex", 
+      alignItems: "center", 
+      gap: 6, 
+      padding: "4px 10px", 
+      background: "rgba(255,255,255,0.15)", 
+      fontFamily: "var(--font-sans)", 
+      fontSize: 11, 
+      textTransform: "uppercase", 
+      letterSpacing: "0.04em" 
+    }}>
+      <span style={{ opacity: 0.7 }}>{label}</span>
+      <strong style={{ fontWeight: 600 }}>{String(value)}</strong>
     </span>
   );
 }
@@ -167,14 +186,34 @@ function MetricPill({ label, value }: { label: string; value: string | number | 
 function ContextPill({ label, value }: { label: string; value: string | number | null | undefined }) {
   if (value === undefined || value === null || value === "") return null;
   return (
-    <span className="pill" style={{ opacity: 0.88 }}>
-      <span style={{ color: "var(--muted)" }}>{label}:</span> {String(value)}
+    <span style={{ 
+      display: "inline-flex", 
+      alignItems: "center", 
+      gap: 4, 
+      padding: "4px 10px", 
+      background: "rgba(255,255,255,0.1)", 
+      fontFamily: "var(--font-sans)", 
+      fontSize: 11, 
+      letterSpacing: "0.02em" 
+    }}>
+      <span style={{ opacity: 0.6 }}>{label}:</span> {String(value)}
     </span>
   );
 }
 
 function Chip({ text }: { text: string }) {
-  return <span className="pill">{text}</span>;
+  return (
+    <span style={{ 
+      display: "inline-block", 
+      padding: "4px 10px", 
+      background: "rgba(255,255,255,0.12)", 
+      fontFamily: "var(--font-sans)", 
+      fontSize: 11, 
+      letterSpacing: "0.02em" 
+    }}>
+      {text}
+    </span>
+  );
 }
 
 function computeExperienceStats(experiences: ExperienceRecord[]): ExperienceStats {
@@ -284,33 +323,33 @@ function ExperienceStatsPanel({ stats }: { stats: ExperienceStats }) {
 
   if (!showAny) {
     return (
-      <section className="card" style={{ marginBottom: 4 }}>
-        <div style={{ fontWeight: 700 }}>At a glance</div>
-        <div className="muted" style={{ marginTop: 8 }}>
+      <section className="card-light" style={{ marginBottom: 4, padding: 24 }}>
+        <h3 className="sans" style={{ fontSize: 15, margin: 0 }}>At a glance</h3>
+        <p className="muted" style={{ marginTop: 8, marginBottom: 0 }}>
           No reports yet—this panel populates once experiences are submitted.
-        </div>
+        </p>
       </section>
     );
   }
 
   return (
-    <section className="card" style={{ marginBottom: 4 }}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap" }}>
+    <section className="card-light" style={{ marginBottom: 4, padding: 24 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, flexWrap: "wrap", marginBottom: 20 }}>
         <div>
-          <div style={{ fontWeight: 700 }}>At a glance</div>
-          <div className="muted" style={{ fontSize: 13, marginTop: 4 }}>
+          <h3 className="sans" style={{ fontSize: 15, margin: 0 }}>At a glance</h3>
+          <p className="muted sans" style={{ fontSize: 13, marginTop: 4, marginBottom: 0 }}>
             Aggregated from {stats.reportCount} report{stats.reportCount === 1 ? "" : "s"}.
-          </div>
+          </p>
         </div>
 
-        <a href="https://www.effectindex.com/effects" target="_blank" rel="noreferrer" className="pill">
-          SEI reference ↗
+        <a href="https://www.effectindex.com/effects" target="_blank" rel="noreferrer" className="pill link-plain">
+          SEI reference
         </a>
       </div>
 
-      <div style={{ marginTop: 14, display: "grid", gap: 14 }}>
+      <div style={{ display: "grid", gap: 20 }}>
         <div>
-          <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>Average metrics</div>
+          <div className="small-caps" style={{ marginBottom: 10 }}>Average metrics</div>
           <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
             <AvgPill label="intensity" value={a.intensity} />
             <AvgPill label="valence" value={a.valence} />
@@ -323,20 +362,20 @@ function ExperienceStatsPanel({ stats }: { stats: ExperienceStats }) {
 
         {stats.topEffects?.length ? (
           <div>
-            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>Top SEI effects</div>
+            <div className="small-caps" style={{ marginBottom: 10 }}>Top SEI effects</div>
             <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
               {stats.topEffects.slice(0, 10).map((x: CountItem) => (
                 <CountChip key={x.key} text={x.key} count={x.count} />
               ))}
             </div>
-            <div className="muted" style={{ fontSize: 12, marginTop: 8 }}>
+            <p className="muted sans" style={{ fontSize: 12, marginTop: 10, marginBottom: 0 }}>
               Counts reflect tags used in submitted reports; prose may contain more nuance than tags.
-            </div>
+            </p>
           </div>
         ) : null}
 
         <div>
-          <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>Common contexts</div>
+          <div className="small-caps" style={{ marginBottom: 10 }}>Common contexts</div>
           <div style={{ display: "grid", gap: 10 }}>
             <ContextRow title="Setting" items={ctx.setting} />
             <ContextRow title="Duration" items={ctx.duration_bucket} />
@@ -353,18 +392,18 @@ function ExperienceStatsPanel({ stats }: { stats: ExperienceStats }) {
 function AvgPill({ label, value }: { label: string; value: number | null }) {
   if (value === null || value === undefined) return null;
   return (
-    <span className="pill" style={{ opacity: 0.9 }}>
-      <span style={{ color: "var(--muted)" }}>{label}</span>
-      <strong style={{ fontWeight: 700 }}>{value}</strong>
+    <span className="pill">
+      <span className="muted">{label}</span>
+      <strong style={{ fontWeight: 600 }}>{value}</strong>
     </span>
   );
 }
 
 function CountChip({ text, count }: { text: string; count: number }) {
   return (
-    <span className="pill" style={{ display: "inline-flex", gap: 8, alignItems: "baseline" }}>
+    <span className="pill" style={{ display: "inline-flex", gap: 6, alignItems: "baseline" }}>
       <span>{text}</span>
-      <span style={{ color: "var(--muted)" }}>×{count}</span>
+      <span className="muted">x{count}</span>
     </span>
   );
 }
@@ -372,8 +411,8 @@ function CountChip({ text, count }: { text: string; count: number }) {
 function ContextRow({ title, items }: { title: string; items: Array<{ key: string; count: number }> }) {
   if (!items || items.length === 0) return null;
   return (
-    <div style={{ display: "flex", gap: 10, alignItems: "baseline", flexWrap: "wrap" }}>
-      <div style={{ width: 90, fontSize: 12, color: "var(--muted)" }}>{title}</div>
+    <div style={{ display: "flex", gap: 12, alignItems: "baseline", flexWrap: "wrap" }}>
+      <div className="sans muted" style={{ width: 80, fontSize: 12 }}>{title}</div>
       <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
         {items.slice(0, 6).map((x) => (
           <CountChip key={x.key} text={x.key} count={x.count} />
