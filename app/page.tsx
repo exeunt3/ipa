@@ -70,15 +70,18 @@ export default async function HomePage() {
           It is this <strong><em>there</em></strong> that is the interest of the Latent Space
           Museum.
         </p>
-        <p>
-          Note: Possible Latent Space visualizations include but are not restricted to the
-          well-trodden route of visual effects replications for psychedelic trips (although
-          these could generally be improved by a report clustering framework). We rather believe
-          the most compelling visualizations to come are of non-optical experiences: geometric
-          or geographic renderings of tension, release, goal pursuit, passage, communication
-          and more that occur in musical practice, in mathematical process, in the bedroom,
-          and (yes) on drugs.
-        </p>
+        <div className={styles.noteBox}>
+          <span className={styles.noteBoxLabel}>Note</span>
+          <p className={styles.noteBoxText}>
+            Possible Latent Space visualizations include but are not restricted to the
+            well-trodden route of visual effects replications for psychedelic trips (although
+            these could generally be improved by a report clustering framework). We rather believe
+            the most compelling visualizations to come are of non-optical experiences: geometric
+            or geographic renderings of tension, release, goal pursuit, passage, communication
+            and more that occur in musical practice, in mathematical process, in the bedroom,
+            and (yes) on drugs.
+          </p>
+        </div>
       </section>
 
       <section className={styles.introSection}>

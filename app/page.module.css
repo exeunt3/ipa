@@ -213,6 +213,32 @@
   line-height: 1.5;
 }
 
+.noteBox {
+  border: 1px solid var(--line);
+  background: var(--bg-alt);
+  padding: 24px;
+  margin-top: 20px;
+}
+
+.noteBoxLabel {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.35;
+  margin-bottom: 10px;
+}
+
+.noteBoxText {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  color: var(--fg-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
 .genresSection {
   max-width: 900px;
   padding-bottom: 64px;
