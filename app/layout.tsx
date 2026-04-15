@@ -4,8 +4,8 @@ import "./globals.css";
 import ThemeToggle from "./components/ThemeToggle";
 
 export const metadata: Metadata = {
-  title: "Intensive Protocol Archive",
-  description: "A Markdown-first archive for intensive protocols and experiences.",
+  title: "Latent Space Museum",
+  description: "A permissionless system for mapping experiential geographies.",
 };
 
 export default function RootLayout({
@@ -18,21 +18,27 @@ export default function RootLayout({
       <body className="site-body">
         <div className="site-shell">
           <header className="site-header">
-            <Link href="/" className="brand">
-              IPA
+            <Link href="/" className="brand link-plain">
+              LSM
             </Link>
             <nav className="nav-links">
-              <Link className="nav-link" href="/protocols">
-                Protocols
+              <Link className="nav-link" href="/submit">
+                Submit
+              </Link>
+              <Link className="nav-link" href="/genres">
+                Genres
+              </Link>
+              <Link className="nav-link" href="/frameworks">
+                Frameworks
+              </Link>
+              <Link className="nav-link" href="/interpretations">
+                Interpretations
+              </Link>
+              <Link className="nav-link" href="/renderings">
+                Renderings
               </Link>
               <Link className="nav-link" href="/about">
                 About
-              </Link>
-              <Link className="nav-link" href="/experiences/new">
-                Add Experience
-              </Link>
-              <Link className="nav-link" href="/protocols/new">
-                New Protocol
               </Link>
               <ThemeToggle />
             </nav>

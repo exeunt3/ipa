@@ -8,69 +8,143 @@ export default function HomePage() {
       <section className="hero">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span className="hero-line">Intensive</span>
-            <span className="hero-line">Protocol</span>
-            <span className="hero-line">Archive</span>
+            <span className="hero-line">Latent</span>
+            <span className="hero-line">Space</span>
+            <span className="hero-line">Museum</span>
           </h1>
           <p className="hero-subtitle">
-            A database for non-pharmacological
+            An archive and marketplace for recording, mapping
             <br />
-            technologies of altered states.
+            and visualizing latent spaces.
           </p>
           <div className="hero-actions">
-            <Link className="button" href="/protocols">
-              Enter the Archive
+            <Link className="button" href="/submit">
+              Submit a report
             </Link>
-            <Link className="button button-outline" href="/protocols/new">
-              Publish a Protocol
+            <Link className="button button-outline" href="/genres">
+              Browse genres
             </Link>
           </div>
+        </div>
+        <div className="hero-aside">
+          <span>step into</span>
+          <span className="hero-aside-indent">the</span>
+          <span>mauve zone</span>
         </div>
       </section>
 
       <section className="intro-section">
-        <h2>What is an Intensive Protocol?</h2>
+        <h2>What is a Latent Space?</h2>
         <p>
-          An intensive protocol is a structured, repeatable practice for
-          entering or modulating non-ordinary modes of experience. It specifies
-          conditions, roles, constraints, and sequences that shape how an event
-          of experience, while refusing appeals to authority, belief, or
-          prescribed meaning. Rather than instructing participants what to
-          experience, intensive protocols set the conditions under which
-          experience can emerge, be felt out, and be collectively negotiated.
+          A latent space is a structured domain of experience that collectives or distributed
+          networks of individuals can explore, in the process pursuing goals and experimenting
+          with outcomes.
         </p>
         <p>
-          Being a genre of open protocols, intensive protocols typically arise
-          outside formal institutions and are circulated in extitutional
-          contexts: scenes, marginalized subcultures, hacker and maker lineages,
-          and all those who seek out in their practice the glowing convergence
-          of autonomy and necessity. Over time, in passing through the creative
-          furnace of the publics, these practices become materially refined and
-          memetically compact systems for reliably entering, modulating, or
-          sustaining intensive states (whether individual, collective, or
-          environmental).
+          <strong>Latent</strong> refers to the fact that these domains of experience may not
+          be directly observable within the framework of dominant perception. Because the
+          well-mapped domain(s) we refer to as &quot;normal experience&quot; correspond to the
+          institutionally reinforced perceptual modes we think of as default, the interest of
+          this exploratory archive is non-ordinary or <em>weird</em> experience that requires
+          active manipulation of one&apos;s perceptual capacities.
         </p>
         <p>
-          The Intensive Protocol Archive documents these open protocols,
-          alongside first-person experiential reports of their application.
-          Contributors can publish new protocols, adapt existing ones, or share
-          phenomenological accounts of what a practice actually feels like from
-          the inside. All entries are versioned, remixable, and shared under
-          open licenses.
+          <strong>Space</strong> here refers to the assumed independent reality of these
+          domains: we conceive of them as real physical architectures with pre-existing
+          features, potentially including barriers, traps, escape valves, and occupants.
+          The assumed &quot;independent reality&quot; of a latent space becomes most meaningful
+          in networked contexts, in decentralized empirical communities of practice often
+          referred to as &quot;scenes,&quot; &quot;subcultures,&quot; or
+          &quot;undergrounds.&quot; The informal processes of empirical validation we find over
+          and over again in these communities tell us that, despite the institutional
+          marginalization of these worlds, there is a <em>there</em> there.
         </p>
-        <p className="ethics-note">
-          IPA is situated in the underground traditions of high agency,
-          participatory, consent-based coordination that values and strives to
-          respect the autonomy of all life. If your protocols or experiences do
-          not reflect that, please do not post here; if you intend to make use
-          of the protocols found here, please take those axioms as a given in
-          your practice.
+        <p>
+          It is this <strong><em>there</em></strong> that is the interest of the Latent Space
+          Museum.
         </p>
+      </section>
 
-        <div className="action-row">
-          <Link href="/experiences/new" className="pill link-plain">
-            + Add an experience report
-          </Link>
+      <section className="intro-section">
+        <h2>What is the LSM?</h2>
+        <p>
+          The LSM is a permissionless research environment for the collection and processing of
+          phenomenological or experiential reports - from groups and individuals - toward the
+          construction of empirically meaningful and visually immersive models of spaces of
+          non-ordinary experience. We are guided by an ethos of radical empiricism: nothing in
+          this world is supernatural, ideal, or untouchable, despite the opinions and control
+          prerogatives of the institutions. If we build models, construct maps, or compile
+          phenomenological accounts, it&apos;s to the end not of capture or closure, but of
+          more empirical inquiry.
+        </p>
+        <p>
+          In our effort not only to be open to non-standard or underground empirical modes, but
+          also to replicate the open-endedness and stigmergy of the underground, we provide no
+          opinion on methodologies: report frameworks, taxonomies, visualization and modelling
+          logics can be submitted permissionlessly. It is up to the community to establish and
+          build meta-frameworks that distinguish the wheat from the chaff, the weird from the
+          square, what have you.
+        </p>
+      </section>
+
+      <section className="intro-section">
+        <h2>Four layers</h2>
+        <p>This website has four basic layers which correspond to different modes of contribution.</p>
+        <div className="layers-grid">
+          <div className="layer-card">
+            <Link href="/submit" className="link-plain">
+              <h3>Reports</h3>
+              <p>
+                First-person (individual or collective) accounts, immutable and
+                preserved in original form. Submitted against a genre of experience
+                and an optional intake framework.
+              </p>
+              <span className="layer-cta">Submit →</span>
+            </Link>
+          </div>
+          <div className="layer-card">
+            <Link href="/frameworks" className="link-plain">
+              <h3>Frameworks</h3>
+              <p>
+                User-created intake schemas; generate as needed for different
+                experience genres or empirical modes. Raw reports can be configured
+                into various schemas as a methodology requires.
+              </p>
+              <span className="layer-cta">Browse →</span>
+            </Link>
+          </div>
+          <div className="layer-card">
+            <Link href="/interpretations" className="link-plain">
+              <h3>Interpretations</h3>
+              <p>
+                Forkable taxonomies and mappings that organize reports into
+                patterns. Ostensibly, the goal is to construct experience
+                &quot;clusters&quot; that can provide empirically robust data for
+                Renderers.
+              </p>
+              <span className="layer-cta">Explore →</span>
+            </Link>
+          </div>
+          <div className="layer-card">
+            <Link href="/renderings" className="link-plain">
+              <h3>Renderings</h3>
+              <p>
+                Visual, spatial, and sensory representations of interpreted
+                experiential data. Make latent structures perceptible.
+              </p>
+              <span className="layer-cta">View →</span>
+            </Link>
+          </div>
+          <div className="layer-card layer-principles-card">
+            <span className="principles-card-label">Principles</span>
+            <ul className="principles-card-list">
+              <li>Reports are append-only and never overwritten.</li>
+              <li>All interpretive layers are optional and forkable.</li>
+              <li>No canonical map is enforced; convergence emerges from use.</li>
+              <li>Competing frameworks coexist without forcing resolution.</li>
+              <li>Consent and anonymity are built into the design.</li>
+            </ul>
+          </div>
         </div>
       </section>
 
@@ -114,8 +188,13 @@ export default function HomePage() {
           display: block;
         }
 
+        .hero-line:nth-child(1) {
+          color: #FF7A29;
+        }
+
         .hero-line:nth-child(2) {
           margin-left: 0.5em;
+          color: #E0197D;
         }
 
         .hero-line:nth-child(3) {
@@ -138,26 +217,53 @@ export default function HomePage() {
           flex-wrap: wrap;
         }
 
-        .hero-actions .button {
+        .hero-actions :global(.button) {
           background: white;
           color: black;
         }
 
-        .hero-actions .button:hover {
-          background: rgba(255, 255, 255, 0.9);
-          color: black;
+        .hero-actions :global(.button:hover) {
+          background: #FF7A29;
+          color: white;
         }
 
-        .hero-actions .button-outline {
+        .hero-actions :global(.button-outline) {
           background: transparent;
           color: white;
           border: 1px solid rgba(255, 255, 255, 0.5);
         }
 
-        .hero-actions .button-outline:hover {
-          background: white;
-          color: black;
+        .hero-actions :global(.button-outline:hover) {
+          background: #E0197D;
+          color: white;
+          border-color: #E0197D;
           border-color: white;
+        }
+
+        .hero-aside {
+          position: absolute;
+          top: 54%;
+          right: 18%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 13px;
+        }
+
+        .hero-aside span {
+          display: inline-block;
+          background: white;
+          color: #0a0a0a;
+          font-family: var(--font-sans);
+          font-size: 13px;
+          font-weight: 400;
+          line-height: 1;
+          padding: 3px 7px;
+          letter-spacing: 0.01em;
+        }
+
+        .hero-aside-indent {
+          margin-left: 2em;
         }
 
         .intro-section {
@@ -176,16 +282,87 @@ export default function HomePage() {
           color: var(--fg);
         }
 
-        .intro-section .ethics-note {
-          margin-top: 32px;
-          padding: 20px 24px;
-          border: 2px solid var(--fg);
-          font-size: 15px;
-          line-height: 1.7;
+        .layers-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+          gap: 1px;
+          border: 1px solid var(--line);
+          background: var(--line);
+          margin-top: 20px;
         }
 
-        .action-row {
-          margin-top: 32px;
+        .layer-card {
+          background: var(--bg);
+          padding: 24px;
+        }
+
+        .layer-card :global(a) {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+          background: none;
+          color: inherit;
+        }
+
+        .layer-card :global(a:hover) {
+          background: none;
+          color: inherit;
+        }
+
+        .layer-card h3 {
+          font-size: 16px;
+          margin: 0;
+        }
+
+        .layer-card p {
+          font-family: var(--font-sans);
+          font-size: 13px;
+          color: var(--fg-muted);
+          line-height: 1.5;
+          flex: 1;
+          margin: 0;
+        }
+
+        .layer-cta {
+          font-family: var(--font-sans);
+          font-size: 12px;
+          font-weight: 600;
+          opacity: 0.5;
+          margin-top: 4px;
+        }
+
+        .layer-card:hover .layer-cta {
+          opacity: 1;
+        }
+
+        .layer-principles-card {
+          grid-column: span 2;
+          background: var(--bg-alt);
+          cursor: default;
+        }
+
+        .principles-card-label {
+          display: block;
+          font-family: var(--font-sans);
+          font-size: 10px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.1em;
+          opacity: 0.35;
+          margin-bottom: 14px;
+        }
+
+        .principles-card-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 7px 32px;
+          font-family: var(--font-sans);
+          font-size: 12px;
+          color: var(--fg-muted);
+          line-height: 1.5;
         }
 
         @media (max-width: 640px) {

@@ -1,49 +1,82 @@
 import { z } from "zod";
 
-export const PROTOCOL_CATEGORIES = [
-  "Music & Sound",
-  "Embodied Practices",
-  "Environmental & Spatial Practices",
-  "Games, Media & Technology",
-] as const;
+// ── FieldSchema: discriminated union for dynamic framework fields ─────────────
 
-export type ProtocolCategory = (typeof PROTOCOL_CATEGORIES)[number];
-
-export const ProtocolSchema = z.object({
-  id: z.string().min(3),
-  title: z.string().min(3),
-  summary: z.string().min(10),
-  status: z.enum(["draft", "published", "deprecated"]).default("draft"),
-  version: z.number().int().min(1).default(1),
-  created_at: z.string(), // YYYY-MM-DD
-  updated_at: z.string(), // YYYY-MM-DD
-  tags: z.array(z.string()).default([]),
-  categories: z.array(z.enum(PROTOCOL_CATEGORIES)).default([]),
-
-  constraints: z
-    .object({
-      group_size: z.number().int().min(1).optional(),
-      duration_minutes: z.number().int().min(1).optional(),
-      setting: z.string().optional(),
-    })
-    .default({}),
-
-  safety: z
-    .object({
-      risk_level: z.enum(["low", "medium", "high"]).default("low"),
-      requires_consent: z.boolean().default(true),
-    })
-    .default({ risk_level: "low", requires_consent: true }),
+const FieldSchemaBase = z.object({
+  id:       z.string(),
+  label:    z.string(),
+  required: z.boolean().default(false),
+  hint:     z.string().optional(),
 });
 
-export const ExperienceSchema = z.object({
-  protocol_id: z.string().min(1).optional(),
-  protocol_slug: z.string().min(1),
-  reported_at: z.string(), // YYYY-MM-DD
+export const FieldSchema = z.discriminatedUnion("type", [
+  FieldSchemaBase.extend({ type: z.literal("text") }),
+  FieldSchemaBase.extend({
+    type: z.literal("number"),
+    min:  z.number().optional(),
+    max:  z.number().optional(),
+  }),
+  FieldSchemaBase.extend({ type: z.literal("boolean") }),
+  FieldSchemaBase.extend({
+    type: z.literal("slider"),
+    min:  z.number(),
+    max:  z.number(),
+  }),
+  FieldSchemaBase.extend({
+    type: z.literal("scale"),
+    min:  z.number(),
+    max:  z.number(),
+  }),
+  FieldSchemaBase.extend({
+    type:       z.literal("dropdown"),
+    vocabulary: z.array(z.string()),
+  }),
+  FieldSchemaBase.extend({
+    type:       z.literal("multiselect"),
+    vocabulary: z.array(z.string()),
+    max:        z.number().optional(),
+  }),
+]);
 
-  anonymity: z.enum(["named", "pseudonymous", "anonymous"]).default("anonymous"),
+export type FieldSchema = z.infer<typeof FieldSchema>;
+export type FieldType = FieldSchema["type"];
 
-  sei_effects: z.array(z.string()).max(7).default([]),
+// ── Framework schemas ─────────────────────────────────────────────────────────
 
-  context: z.record(z.string(), z.unknown()).default({}),
+export const FrameworkCreateSchema = z.object({
+  name:        z.string().min(3),
+  description: z.string().default(""),
+  fields:      z.array(FieldSchema).default([]),
+});
+
+// ── Report schemas ────────────────────────────────────────────────────────────
+
+export const ReportSubmitSchema = z.object({
+  genre_id:     z.number().int().nullable(),
+  framework_id: z.number().int().nullable(),
+  mode:         z.enum(["blind", "open"]).default("open"),
+  structured:   z.record(z.string(), z.unknown()).default({}),
+  narrative:    z.string().min(20),
+  aftereffects: z.string().default(""),
+  sei_effects:  z.array(z.string()).default([]),
+  anonymity:    z.enum(["anonymous", "pseudonymous", "named"]).default("anonymous"),
+});
+
+// ── Interpretation schemas ────────────────────────────────────────────────────
+
+export const InterpretationCreateSchema = z.object({
+  name:        z.string().min(3),
+  description: z.string().min(10),
+  report_ids:  z.array(z.number().int()).default([]),
+  operations:  z.array(z.record(z.string(), z.unknown())).default([]),
+});
+
+// ── Rendering schemas ─────────────────────────────────────────────────────────
+
+export const RenderingCreateSchema = z.object({
+  title:                  z.string().min(3),
+  description:            z.string().default(""),
+  media_type:             z.enum(["image", "video", "3d", "interactive", "audio", "link"]).default("link"),
+  url:                    z.string().url().optional().or(z.literal("")),
+  linked_interpretations: z.array(z.number().int()).default([]),
 });
