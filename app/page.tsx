@@ -1,21 +1,25 @@
-"use client";
-
 import Link from "next/link";
+import { listGenres } from "@/lib/queries/genres";
+import styles from "./page.module.css";
 
-export default function HomePage() {
+export const dynamic = "force-dynamic";
+
+export default async function HomePage() {
+  const genres = await listGenres();
+
   return (
     <main>
-      <section className="hero">
-        <div className="hero-content">
-          <h1 className="hero-title">
-            <span className="hero-line">Latent</span>
-            <span className="hero-line">Space</span>
-            <span className="hero-line">Museum</span>
+      <section className={styles.hero}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            <span className={styles.heroLine}>Latent</span>
+            <span className={styles.heroLine}>Space</span>
+            <span className={styles.heroLine}>Museum</span>
           </h1>
-          <p className="hero-subtitle">
+          <p className={styles.heroSubtitle}>
             A peer curated archive for recording, mapping and visualizing latent spaces of the underground.
           </p>
-          <div className="hero-actions">
+          <div className={styles.heroActions}>
             <Link className="button" href="/submit">
               Submit a report
             </Link>
@@ -24,14 +28,14 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
-        <div className="hero-aside">
+        <div className={styles.heroAside}>
           <span>step into</span>
-          <span className="hero-aside-indent">the</span>
+          <span className={styles.heroAsideIndent}>the</span>
           <span>mauve zone</span>
         </div>
       </section>
 
-      <section className="intro-section">
+      <section className={styles.introSection}>
         <h2>What is a Latent Space?</h2>
         <p>
           In the sciences, a latent space is a structured domain whose features are not directly
@@ -66,9 +70,18 @@ export default function HomePage() {
           It is this <strong><em>there</em></strong> that is the interest of the Latent Space
           Museum.
         </p>
+        <p>
+          Note: Possible Latent Space visualizations include but are not restricted to the
+          well-trodden route of visual effects replications for psychedelic trips (although
+          these could generally be improved by a report clustering framework). We rather believe
+          the most compelling visualizations to come are of non-optical experiences: geometric
+          or geographic renderings of tension, release, goal pursuit, passage, communication
+          and more that occur in musical practice, in mathematical process, in the bedroom,
+          and (yes) on drugs.
+        </p>
       </section>
 
-      <section className="intro-section">
+      <section className={styles.introSection}>
         <h2>What is the LSM?</h2>
         <p>
           The Latent Space Museum (LSM) is a research environment and peer-curated archive. We
@@ -97,11 +110,11 @@ export default function HomePage() {
         </p>
       </section>
 
-      <section className="intro-section">
+      <section className={styles.introSection}>
         <h2>Four layers</h2>
         <p>This website has four basic layers which correspond to different modes of contribution.</p>
-        <div className="layers-grid">
-          <div className="layer-card">
+        <div className={styles.layersGrid}>
+          <div className={styles.layerCard}>
             <Link href="/submit" className="link-plain">
               <h3>Reports</h3>
               <p>
@@ -109,10 +122,10 @@ export default function HomePage() {
                 preserved in original form. Submitted against a genre of experience
                 and an optional intake framework.
               </p>
-              <span className="layer-cta">Submit →</span>
+              <span className={styles.layerCta}>Submit →</span>
             </Link>
           </div>
-          <div className="layer-card">
+          <div className={styles.layerCard}>
             <Link href="/frameworks" className="link-plain">
               <h3>Frameworks</h3>
               <p>
@@ -120,10 +133,10 @@ export default function HomePage() {
                 experience genres or empirical modes. Raw reports can be configured
                 into various schemas as a methodology requires.
               </p>
-              <span className="layer-cta">Browse →</span>
+              <span className={styles.layerCta}>Browse →</span>
             </Link>
           </div>
-          <div className="layer-card">
+          <div className={styles.layerCard}>
             <Link href="/interpretations" className="link-plain">
               <h3>Interpretations</h3>
               <p>
@@ -132,21 +145,21 @@ export default function HomePage() {
                 &quot;clusters&quot; that can provide empirically robust data for
                 Renderers.
               </p>
-              <span className="layer-cta">Explore →</span>
+              <span className={styles.layerCta}>Explore →</span>
             </Link>
           </div>
-          <div className="layer-card">
+          <div className={styles.layerCard}>
             <Link href="/renderings" className="link-plain">
               <h3>Renderings</h3>
               <p>
                 Visual, spatial, and sensory representations of interpreted data.
               </p>
-              <span className="layer-cta">View →</span>
+              <span className={styles.layerCta}>View →</span>
             </Link>
           </div>
-          <div className="layer-card layer-principles-card">
-            <span className="principles-card-label">Principles</span>
-            <ul className="principles-card-list">
+          <div className={`${styles.layerCard} ${styles.layerPrinciplesCard}`}>
+            <span className={styles.principlesCardLabel}>Principles</span>
+            <ul className={styles.principlesCardList}>
               <li>Reports are append-only and never overwritten.</li>
               <li>All interpretive layers are optional and forkable.</li>
               <li>No canonical map is enforced; convergence emerges from use.</li>
@@ -157,250 +170,24 @@ export default function HomePage() {
         </div>
       </section>
 
-      <style jsx>{`
-        .hero {
-          position: relative;
-          margin: -40px -24px 48px;
-          padding: 0;
-          min-height: 80vh;
-          display: flex;
-          align-items: flex-end;
-          background:
-            linear-gradient(
-              to top,
-              rgba(0, 0, 0, 0.85) 0%,
-              rgba(0, 0, 0, 0.4) 50%,
-              rgba(0, 0, 0, 0.2) 100%
-            ),
-            url("/hero-bg.png") center center / cover no-repeat;
-          background-color: #0a0a0a;
-        }
-
-        .hero-content {
-          padding: 48px 32px;
-          width: 100%;
-          max-width: 900px;
-          margin: 0 auto;
-        }
-
-        .hero-title {
-          font-family: var(--font-sans);
-          font-weight: 400;
-          font-size: clamp(48px, 12vw, 120px);
-          line-height: 0.9;
-          color: white;
-          margin-bottom: 24px;
-          letter-spacing: -0.02em;
-        }
-
-        .hero-line {
-          display: block;
-        }
-
-        .hero-line:nth-child(1) {
-          color: #FF7A29;
-        }
-
-        .hero-line:nth-child(2) {
-          margin-left: 0.5em;
-          color: #E0197D;
-        }
-
-        .hero-line:nth-child(3) {
-          margin-left: 0.2em;
-        }
-
-        .hero-subtitle {
-          font-family: var(--font-sans);
-          font-size: 15px;
-          font-weight: 400;
-          color: rgba(255, 255, 255, 0.8);
-          margin-bottom: 32px;
-          line-height: 1.6;
-          letter-spacing: 0.02em;
-        }
-
-        .hero-actions {
-          display: flex;
-          gap: 12px;
-          flex-wrap: wrap;
-        }
-
-        .hero-actions :global(.button) {
-          background: white;
-          color: black;
-        }
-
-        .hero-actions :global(.button:hover) {
-          background: #FF7A29;
-          color: white;
-        }
-
-        .hero-actions :global(.button-outline) {
-          background: transparent;
-          color: white;
-          border: 1px solid rgba(255, 255, 255, 0.5);
-        }
-
-        .hero-actions :global(.button-outline:hover) {
-          background: #E0197D;
-          color: white;
-          border-color: #E0197D;
-          border-color: white;
-        }
-
-        .hero-aside {
-          position: absolute;
-          top: 54%;
-          right: 18%;
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 13px;
-        }
-
-        .hero-aside span {
-          display: inline-block;
-          background: white;
-          color: #0a0a0a;
-          font-family: var(--font-sans);
-          font-size: 13px;
-          font-weight: 400;
-          line-height: 1;
-          padding: 3px 7px;
-          letter-spacing: 0.01em;
-        }
-
-        .hero-aside-indent {
-          margin-left: 2em;
-        }
-
-        .intro-section {
-          margin-top: 48px;
-          max-width: 680px;
-        }
-
-        .intro-section h2 {
-          font-size: 24px;
-          margin-bottom: 20px;
-        }
-
-        .intro-section p {
-          margin-bottom: 20px;
-          line-height: 1.75;
-          color: var(--fg);
-        }
-
-        .layers-grid {
-          display: grid;
-          grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-          gap: 1px;
-          border: 1px solid var(--line);
-          background: var(--line);
-          margin-top: 20px;
-        }
-
-        .layer-card {
-          background: var(--bg);
-          padding: 24px;
-        }
-
-        .layer-card :global(a) {
-          display: flex;
-          flex-direction: column;
-          gap: 8px;
-          background: none;
-          color: inherit;
-        }
-
-        .layer-card :global(a:hover) {
-          background: none;
-          color: inherit;
-        }
-
-        .layer-card h3 {
-          font-size: 16px;
-          margin: 0;
-        }
-
-        .layer-card p {
-          font-family: var(--font-sans);
-          font-size: 13px;
-          color: var(--fg-muted);
-          line-height: 1.5;
-          flex: 1;
-          margin: 0;
-        }
-
-        .layer-cta {
-          font-family: var(--font-sans);
-          font-size: 12px;
-          font-weight: 600;
-          opacity: 0.5;
-          margin-top: 4px;
-        }
-
-        .layer-card:hover .layer-cta {
-          opacity: 1;
-        }
-
-        .layer-principles-card {
-          grid-column: span 2;
-          background: var(--bg-alt);
-          cursor: default;
-        }
-
-        .principles-card-label {
-          display: block;
-          font-family: var(--font-sans);
-          font-size: 10px;
-          font-weight: 600;
-          text-transform: uppercase;
-          letter-spacing: 0.1em;
-          opacity: 0.35;
-          margin-bottom: 14px;
-        }
-
-        .principles-card-list {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          gap: 7px 32px;
-          font-family: var(--font-sans);
-          font-size: 12px;
-          color: var(--fg-muted);
-          line-height: 1.5;
-        }
-
-        @media (max-width: 640px) {
-          .hero {
-            margin: -40px -16px 32px;
-            min-height: 70vh;
-          }
-
-          .hero-content {
-            padding: 32px 20px;
-          }
-
-          .hero-title {
-            font-size: clamp(36px, 14vw, 72px);
-          }
-
-          .hero-line:nth-child(2) {
-            margin-left: 0.3em;
-          }
-
-          .hero-line:nth-child(3) {
-            margin-left: 0.1em;
-          }
-
-          .hero-aside {
-            display: none;
-          }
-        }
-      `}</style>
+      <section className={`${styles.introSection} ${styles.genresSection}`}>
+        <h2>Genres</h2>
+        <p>Experiential domains. Select one to browse reports or contribute your own.</p>
+        <div className={styles.genreGrid}>
+          {genres.map((genre) => (
+            <Link key={genre.slug} href={`/genres/${genre.slug}`} className={styles.genreCard}>
+              <h3 className={styles.genreName}>{genre.name}</h3>
+              <p className={styles.genreDesc}>{genre.description}</p>
+              <div className={styles.genreFooter}>
+                <span className={styles.genreCount}>
+                  {genre.report_count} {genre.report_count === 1 ? "report" : "reports"}
+                </span>
+                <span className={styles.genreArrow}>→</span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
