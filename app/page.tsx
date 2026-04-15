@@ -17,7 +17,7 @@ export default async function HomePage() {
             <span className={styles.heroLine}>Museum</span>
           </h1>
           <p className={styles.heroSubtitle}>
-            A peer curated archive for recording, mapping and visualizing latent spaces of the underground.
+            A peer curated archive for recording, mapping and visualizing latent spaces of the cultural underground.
           </p>
           <div className={styles.heroActions}>
             <Link className="button" href="/submit">

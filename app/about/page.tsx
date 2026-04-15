@@ -6,7 +6,7 @@ export default function AboutPage() {
       <div className="page-heading">
         <h1>About the LSM</h1>
         <p className="page-desc">
-          A peer-curated archive for recording, mapping and visualizing latent spaces of the underground.
+          A peer-curated archive for recording, mapping and visualizing latent spaces of the cultural underground.
         </p>
       </div>
 
