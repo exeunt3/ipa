@@ -13,7 +13,7 @@ export default function HomePage() {
             <span className="hero-line">Museum</span>
           </h1>
           <p className="hero-subtitle">
-            An archive and marketplace for recording, mapping and visualizing latent spaces.
+            A peer curated archive for recording, mapping and visualizing latent spaces of the underground.
           </p>
           <div className="hero-actions">
             <Link className="button" href="/submit">
@@ -34,9 +34,14 @@ export default function HomePage() {
       <section className="intro-section">
         <h2>What is a Latent Space?</h2>
         <p>
-          A latent space is a structured domain of experience that collectives or distributed
-          networks of individuals can explore, in the process pursuing goals and experimenting
-          with outcomes.
+          In the sciences, a latent space is a structured domain whose features are not directly
+          observable through ordinary means, but whose structure can be inferred and navigated
+          through patterns in what is observable.
+        </p>
+        <p>
+          In the context of the LSM, a latent space is a hidden domain that collectives or
+          distributed networks of individuals explore by virtue of radical-empirical means,
+          intuiting structure through signalled consensus in free process.
         </p>
         <p>
           <strong>Latent</strong> refers to the fact that these domains of experience may not
@@ -66,22 +71,29 @@ export default function HomePage() {
       <section className="intro-section">
         <h2>What is the LSM?</h2>
         <p>
-          The LSM is a permissionless research environment for the collection and processing of
-          phenomenological or experiential reports - from groups and individuals - toward the
-          construction of empirically meaningful and visually immersive models of spaces of
-          non-ordinary experience. We are guided by an ethos of radical empiricism: nothing in
-          this world is supernatural, ideal, or untouchable, despite the opinions and control
-          prerogatives of the institutions. If we build models, construct maps, or compile
-          phenomenological accounts, it&apos;s to the end not of capture or closure, but of
-          more empirical inquiry.
+          The Latent Space Museum (LSM) is a research environment and peer-curated archive. We
+          collect and process experiential reports from groups and individuals to the end of
+          constructing empirically meaningful and visually immersive models of latent spaces. We
+          are guided by an ethos of radical empiricism: nothing in this world is supernatural,
+          ideal, or untouchable, despite the opinions and control prerogatives of the institutions.
+          If we build models, construct maps, or compile phenomenological accounts, it&apos;s to
+          the end not of capture or closure, but of more empirical inquiry.
         </p>
         <p>
           In our effort not only to be open to non-standard or underground empirical modes, but
-          also to replicate the open-endedness and stigmergy of the underground, we provide no
+          also to replicate the open-endedness and stigmergy of the underground, LSM provides no
           opinion on methodologies: report frameworks, taxonomies, visualization and modelling
-          logics can be submitted permissionlessly. It is up to the community to establish and
-          build meta-frameworks that distinguish the wheat from the chaff, the weird from the
-          square, what have you.
+          logics can be submitted permissionlessly. The community may establish and build
+          meta-frameworks that distinguish the wheat from the chaff, the weird from the square,
+          but the excess will always remain.
+        </p>
+        <p>
+          All contributions are published under a Creative Commons license — this knowledge
+          belongs to no one and therefore to everyone. As the LSM develops, we intend to build
+          a token economy capable of rewarding contribution, curation, and interpretation
+          outside of any need for copyright or gated information. It&apos;s our hope that this
+          incentive design might make the openness of the archive a structural feature rather
+          than a sacrifice.
         </p>
       </section>
 
@@ -127,8 +139,7 @@ export default function HomePage() {
             <Link href="/renderings" className="link-plain">
               <h3>Renderings</h3>
               <p>
-                Visual, spatial, and sensory representations of interpreted
-                experiential data. Make latent structures perceptible.
+                Visual, spatial, and sensory representations of interpreted data.
               </p>
               <span className="layer-cta">View →</span>
             </Link>

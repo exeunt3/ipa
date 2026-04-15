@@ -28,40 +28,54 @@ Edit freely. When you send this back, the changes will be reflected on the site.
 **Line 3:** Museum
 
 **Subtitle:**
-A permissionless system for mapping
-experiential geographies.
+A peer curated archive for recording, mapping and visualizing latent spaces of the underground.
 
 **Button 1:** Submit a report
 **Button 2:** Browse genres
 
 ---
 
+### What is a Latent Space?
+
+In the sciences, a latent space is a structured domain whose features are not directly observable through ordinary means, but whose structure can be inferred and navigated through patterns in what is observable.
+
+In the context of the LSM, a latent space is a hidden domain that collectives or distributed networks of individuals explore by virtue of radical-empirical means, intuiting structure through signalled consensus in free process. 
+
+**Latent** refers to the fact that these domains of experience may not be directly observable within the framework of dominant perception. Because the well-mapped domain(s) we refer to as "normal experience" correspond to the institutionally reinforced perceptual modes we think of as default, the interest of this exploratory archive is non-ordinary or *weird* experience that requires active manipulation of one's perceptual capacities.
+
+**Space** here refers to the assumed independent reality of these domains: we conceive of them as real physical architectures with pre-existing features, potentially including barriers, traps, escape valves, and occupants. The assumed "independent reality" of a latent space becomes most meaningful in networked contexts, in decentralized empirical communities of practice often referred to as "scenes," "subcultures," or "undergrounds." The informal processes of empirical validation we find over and over again in these communities tell us that, despite the institutional marginalization of these worlds, there is a *there* there.
+
+It is this ***there*** that is the interest of the Latent Space Museum.
+
+---
+
 ### What is the LSM?
 
-A permissionless research environment for the collection and comparison of experiential knowledge across domains that push or exceed ordinary perception. It supports a form of radical empiricism: the disciplined accumulation and transformation of first-person reports into shared, navigable structures, without prematurely collapsing them into a single explanatory framework.
+The Latent Space Museum (LSM) is a research environment and peer-curated archive.  We collect and process experiential reports from groups and individuals to the end of constructing empirically meaningful and visually immersive models of latent spaces. We are guided by an ethos of radical empiricism: nothing in this world is supernatural, ideal, or untouchable, despite the opinions and control prerogatives of the institutions. If we build models, construct maps, or compile phenomenological accounts, it's to the end not of capture or closure, but of more empirical inquiry.
 
-The LSM treats experience as carrying latent structure rather than as purely private, ineffable content. That structure can be discovered and made legible through collective effort. Many intensive or non-ordinary experiences, across meditation, psychedelics, BDSM, sensory deprivation, lucid dreaming, and mathematics, correspond to recurrent, potentially mappable regions within a broader experiential or cognitive manifold.
+In our effort not only to be open to non-standard or underground empirical modes, but also to replicate the open-endedness and stigmergy of the underground, LSM provides no opinion on methodologies: report frameworks, taxonomies, visualization and modelling logics can be submitted permissionlessly. The community may establish and build meta-frameworks that distinguish the wheat from the chaff, the weird from the square, but the excess will always remain.
 
-Rather than beginning with fixed categories, the LSM allows genres of experience to emerge. Interpreters design competing frameworks; each shapes what can be perceived and compared. Over time, more effective frameworks uncover patterns that had no prior vocabulary.
+All contributions are published under a Creative Commons license — this knowledge belongs to no one and therefore to everyone. As the LSM develops, we intend to build a token economy capable of rewarding contribution, curation, and interpretation outside of any need for copyright or gated information. It's our hope that this incentive design might make the openness of the archive a structural feature rather than a sacrifice.
 
 ---
 
 ### Four layers (cards)
 
 **Reports**
-First-person accounts. Immutable and preserved in original form. Submitted against a genre and an optional intake framework.
+First-person (individual or collective) accounts, immutable and preserved in original form. Submitted against a genre of experience and an optional intake framework.
 *Link label:* Submit →
 
 **Frameworks**
-User-created intake schemas. Each framework is an instrument of perception that shapes what can be captured and compared.
+User-created intake schemas; generated as needed for different experience genres or empirical modes. Raw reports can be configured into various schemas as a methodology requires.
 *Link label:* Browse →
 
 **Interpretations**
-Forkable taxonomies and mappings that organize reports into patterns. No single interpretation is authoritative.
+Forkable taxonomies and mappings that organize reports into patterns. Ostensibly, the goal is to construct experience "clusters" that can provide empirically robust data for Renderers.
 *Link label:* Explore →
 
 **Renderings**
-Visual, spatial, and sensory representations of interpreted experiential data. Make latent structures perceptible.
+Visual, spatial, and sensory representations of interpreted data.
+
 *Link label:* View →
 
 ---
@@ -80,85 +94,35 @@ Visual, spatial, and sensory representations of interpreted experiential data. M
 
 **Page heading:** About the LSM
 
-**Page description:** Latent Space Museum, a permissionless system for mapping experiential geographies.
+**Page description:** A peer-curated archive for recording, mapping and visualizing latent spaces of the underground.
 
 ---
 
 ### What this is
 
-The LSM is an open infrastructure for the collection, comparison, and construction of experiential knowledge across domains that push or exceed ordinary perception. It supports a form of radical empiricism: the disciplined accumulation and transformation of first-person reports into shared, navigable structures, without prematurely collapsing them into a single explanatory framework.
+The LSM is an archive and marketplace for phenomenological reports: a permissionless research environment for the collection, processing, and interpretation of first-person accounts of non-ordinary experience, toward the construction of empirically meaningful and visually immersive models of latent spaces.
 
-The LSM treats experience as data with latent structure rather than as private, ineffable content. That structure may be discovered, stabilized, and made navigable through collective effort. The working hypothesis is that many intensive or non-ordinary experiences, across meditation, psychedelics, BDSM, sensory deprivation, lucid dreaming, mathematics, and other domains, correspond to real, recurrent, and potentially mappable regions within a broader experiential or cognitive manifold.
+The LSM starts from the simple empirical commitment that domains explored in underground, subcultural, and institutionally marginalized communities of practice are real. Not metaphorically real, but structurally real, in the way any territory is real. The informal validation that accumulates across scenes takes recognizable forms: convergent reports, shared vocabulary, accumulated technique, recurring failure modes. LSM exists to formalize and extend this distributed empiricism so as to better understand these spaces.
 
----
-
-### What this is not
-
-- Not a social network
-- Not a content platform
-- Not a fixed ontology
-- Not a claim about the ultimate nature of experience
-- Not an authority
-
----
-
-### What makes a useful report
-
-A report does not need to be unusual or dramatic. The empirical signal comes from structure, not intensity. Reports that generate the most comparative value tend to trace:
-
-- What you were trying to do
-- What made it difficult
-- What changed (or did not)
-
-Pure passive observation ("the light looked different," "it was beautiful") carries less signal than accounts of engagement with a situation: attempts, resistance, adjustment, outcome.
+What we call "normal experience" corresponds to institutionally reinforced perceptual modes, selected and normalized over time. The interest of the LSM is the rest: non-ordinary or *weird* experience that requires active manipulation of perceptual capacity to access, and that remains structurally real despite its marginal institutional status.
 
 ---
 
 ### The four layers
 
-The system has four non-hierarchical layers, none of which overwrites another. Raw reports stay intact regardless of what gets built above them. Frameworks are optional; interpretations are contingent and forkable; renderings are expressive and revisable.
+The system has four non-hierarchical layers, each corresponding to a different mode of contribution. No layer overwrites another. Raw reports stay intact regardless of what gets built above them. Frameworks are optional; interpretations are contingent and forkable; renderings are expressive and revisable.
 
 **Reports** *(links to /submit)*
-First-person accounts of an experience. Immutable. Submitted against an optional genre and an optional intake framework. Can be contributed in blind mode (before viewing others) or open mode.
+First-person (individual or collective) accounts, immutable and preserved in original form. Submitted against a genre of experience and an optional intake framework. Can be contributed in blind mode (before viewing others) or open mode.
 
 **Frameworks** *(links to /frameworks)*
-User-created schemas for structuring experience reports. Each framework is an instrument of perception: a set of fields that shapes what can be captured, compared, and aggregated across reports. Frameworks are forkable and versioned, competing for adoption through use.
+User-created intake schemas; generate as needed for different experience genres or empirical modes. Raw reports can be configured into various schemas as a methodology requires. Frameworks are forkable and versioned, competing for adoption through use.
 
 **Interpretations** *(links to /interpretations)*
-User-generated structures that organize reports into meaningful patterns: clusters, taxonomies, proto-places, geographic mappings. Fully forkable, non-authoritative, and coexistent with competing interpretations. Recurring experiential regions, the sense of "where", emerge at this layer, not from the submission layer.
+User-generated structures that organize reports into patterns: clusters, taxonomies, proto-places, geographic mappings. Ostensibly, the goal is to construct experience clusters that provide empirically robust data for Renderers. Fully forkable, non-authoritative, and coexistent with competing interpretations. Recurring experiential regions, the sense of "where", emerge at this layer, not from submission.
 
 **Renderings** *(links to /renderings)*
 Visual, spatial, or sensory representations of interpreted data. Renderings make latent structures perceptible: to contributors, interpreters, and external audiences. They are both navigational instruments and expressive outputs that can influence future reports.
-
----
-
-### Epistemic commitments
-
-The LSM operates in the tension between subjectivity and structure, exploration and convergence, expression and measurement. It seeks to turn that tension into a productive field of inquiry rather than resolving it prematurely.
-
-This position draws from a lineage of thought that includes William James' radical empiricism, which insists that relations and transitions are as real as discrete objects; process philosophy, which treats experience as ontogenetic and continuously forming; and contemporary work on cognitive architectures, which proposes that agents construct and navigate spaces of possibility defined by their sensing, memory, and action capacities. In this view, perception actively probes a structured space rather than passively recording a pre-given world.
-
-The LSM extends this idea into cultural and technical practices, treating protocols (meditative, somatic, chemical, computational) as interfaces into distinct regions of a shared but unevenly accessible space. Rather than committing to any single ontology of these spaces, it hosts competing instruments of access and interpretation.
-
----
-
-### Underground knowledge
-
-The LSM also draws from traditions of underground and extitutional knowledge production: domains where formal institutions have limited reach and experiential rigor develops through informal, distributed practices. Knowledge in these contexts is frequently tacit, embodied, difficult to formalize, and resistant to capture.
-
-The LSM aims to make such knowledge legible without flattening it, providing tools for structured input, aggregation, and transformation while preserving the irreducible richness of first-person accounts.
-
----
-
-### Success criteria
-
-The system is working if:
-
-- Multiple independent reports show unexpected convergence
-- Interpretations produce coherent clusters ("regions")
-- Renderings feel uncannily accurate or navigable
-- Contributors return to refine and re-map experiences
-- New frameworks reveal patterns that had no prior vocabulary
 
 ---
 
