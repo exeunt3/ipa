@@ -13,9 +13,7 @@ export default function HomePage() {
             <span className="hero-line">Museum</span>
           </h1>
           <p className="hero-subtitle">
-            An archive and marketplace for recording, mapping
-            <br />
-            and visualizing latent spaces.
+            An archive and marketplace for recording, mapping and visualizing latent spaces.
           </p>
           <div className="hero-actions">
             <Link className="button" href="/submit">
@@ -385,6 +383,10 @@ export default function HomePage() {
 
           .hero-line:nth-child(3) {
             margin-left: 0.1em;
+          }
+
+          .hero-aside {
+            display: none;
           }
         }
       `}</style>

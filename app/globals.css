@@ -644,12 +644,16 @@ article li {
   .site-header {
     flex-direction: column;
     align-items: flex-start;
-    gap: 12px;
+    gap: 8px;
+    padding: 12px 0;
   }
 
   .nav-links {
     gap: 16px;
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 4px;
   }
   
   .card {
